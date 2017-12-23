@@ -32,4 +32,25 @@ interface ApiService {
             @Field("password")reg_password: String
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("change")
+    fun changePassword (
+            @Field("id") user_id: String,
+            @Field("password_old")password_old: String,
+            @Field("password_new")password_new: String
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("forgot")
+    fun forgotPassword (
+            @Field("email") email: String
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("detail")
+    fun userDetail (
+            @Field("uid") user_id: String,
+            @Field("token") token: String
+    ): Call<ResponseBody>
+
 }

@@ -8,32 +8,31 @@ package id.asmith.someapp.util
  */
 object AppConstants {
 
+    //Email validation
     val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 
+    //Local data pref
+    val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
+    val PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID"
+    val PREF_KEY_CURRENT_USER_TOKEN = "PREF_KEY_CURRENT_USER_ACCESS_TOKEN"
 
-    //Local data
-    val STATUS_CODE_SUCCESS = "success"
-
-    val STATUS_CODE_FAILED = "failed"
-
-    val API_STATUS_CODE_LOCAL_ERROR = 0
-
-    val DB_NAME = "queue.db"
-
-    val PREF_NAME = "queue_pref"
-
+    //Local data db
+    val DB_NAME = "QueueApp"
+    val DB_VERSION = 1
+    val DB_TABLE = "user"
     val NULL_INDEX = -1L
 
-    val SEED_DATABASE_OPTIONS = "seed/options.json"
-
-    val SEED_DATABASE_QUESTIONS = "seed/questions.json"
-
     //Remote data
-    private val BASE_API_URL = "http://192.168.43.70/project/"
+    private val BASE_API_URL = "http://192.168.43.70/project/queue-api/"
 
-    private val BASE_ROUTE_API = "queue-api/api/v1/auth/"
+    private val AUTH_ROUTE = "api/v1/auth/"
+    private val USER_ROUTE = "api/v1/user/"
+    private val USER_PASSWORD_ROUTE = "api/v1/user/password/"
 
-    val AUTH_API_URL = BASE_API_URL + BASE_ROUTE_API
+    val AUTH_API_URL = BASE_API_URL + AUTH_ROUTE
+    val USER_API_URL = BASE_API_URL + USER_ROUTE
+    val USER_PASSWORD_API_URL = BASE_API_URL + USER_PASSWORD_ROUTE
+
 
 }

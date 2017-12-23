@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.asmith.someapp.R
+import id.asmith.someapp.ui.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_auth_signin.*
 import okhttp3.ResponseBody
 import org.jetbrains.anko.*
@@ -26,9 +27,7 @@ import retrofit2.Response
 import id.asmith.someapp.data.remote.ApiClient as mApiService
 import id.asmith.someapp.util.CommonUtils as utils
 
-
 class AuthSigninFragment : Fragment() {
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -136,10 +135,25 @@ class AuthSigninFragment : Fragment() {
 
                                     if (accStatus != 0) {
 
+                                        /* test login
                                         activity?.alert("$message your id $uid " +
                                                 "your token $token", "Welcome") {
                                             yesButton {  activity?.toast("Welcome back") }
-                                        }?.show()?.setCancelable(false)
+                                        }?.show()?.setCancelable(false)*/
+
+                                        Log.d("Debug", "Success login")
+
+
+                                       activity!!.startActivity<MainActivity>(
+                                                "EXTRA_UID" to uid,
+                                                "EXTRA_TOKEN" to token)
+
+                                        /*val intent = Intent(activity, MainActivity::class.java)
+                                        intent.putExtra("EXTRA_UID", uid)
+                                        intent.putExtra("EXTRA_TOKEN", token)
+                                        startActivity(intent)*/
+
+                                        activity!!.finish()
 
                                     } else {
 

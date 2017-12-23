@@ -10,9 +10,6 @@ import android.view.ViewGroup
 import id.asmith.someapp.R
 
 
-/**
- * A simple [Fragment] subclass.
- */
 class AuthLockFragment : Fragment() {
 
 
