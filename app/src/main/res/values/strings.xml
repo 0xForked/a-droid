@@ -1,0 +1,69 @@
+<resources>
+    <!-- app -->
+    <string name="app_name">Some App</string>
+    <string name="app_name_caps">SOME APP</string>
+    <string name="app_description">Some App by FookiPoke</string>
+
+    <!--play store-->
+    <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link">"market://details?id="</string>
+
+    <!-- company -->
+    <string name="company_name">FookiPoke App</string>
+    <string name="company_email">mail@fookiPoke.id</string>
+    <string name="company_number">+62 822 7111 5593</string>
+
+    <!--rating dialog-->
+    <string name="rate_us">Rate Us</string>
+    <string name="rating_message">Please let us know, how can we improve ourselves?</string>
+    <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the stars.</string>
+    <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
+    <string name="rating_play_store_text">Rate us on Play Store</string>
+    <string name="rating_not_provided_error">Please provide us stars.</string>
+    <string name="rating_thanks">Thank you!</string>
+
+    <!--empty state-->
+    <string name="empty_screen">We do not have anything\nhere right now.</string>
+    <string name="empty_please_retry">Please Retry</string>
+    <string name="empty_retry">Retry</string>
+
+    <!-- action -->
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+
+    <!-- content description -->
+    <string name="desc_logo">Logo</string>
+    <string name="desc_image">Image</string>
+
+    <!-- Caption -->
+    <string name="caption_enter_email">Please enter your registered email address</string>
+    <string name="caption_basic_information">Basic information</string>
+    <string name="caption_private_information">Private information</string>
+    <string name="caption_register">Do not have an account? Sing up</string>
+    <string name="caption_login">Already a member? Sign in</string>
+    <string name="caption_forgot_password">Forgot password?</string>
+    <string name="caption_enter_password">Enter password</string>
+    <string name="caption_change_account">Change account</string>
+    <string name="caption_valid_email">Email not valid</string>
+    <string name="caption_empty_name">Name field is empty</string>
+    <string name="caption_empty_email">Email field is empty</string>
+    <string name="caption_empty_phone">Phone field is empty</string>
+    <string name="caption_empty_password">Password field is empty</string>
+
+    <!-- Button -->
+    <string name="button_submit">Submit</string>
+    <string name="button_back">Back</string>
+    <string name="button_signin">Sign In</string>
+    <string name="button_signup">Sign up</string>
+    <string name="button_login">Log in</string>
+
+    <!-- Sing in/up -->
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="phone">Mobile</string>
+    <string name="full_name">Full Name</string>
+    <string name="password">Password</string>
+    <string name="birth">Birth</string>
+
+
+</resources>

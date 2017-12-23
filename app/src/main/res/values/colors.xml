@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- main colors -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- gray scale -->
+    <color name="white">#ffffff</color>
+    <color name="light_gray">#ececec</color>
+    <color name="semi_gray">#979797</color>
+    <color name="gray">#7e7e7e</color>
+    <color name="dark_gray">#696969</color>
+    <color name="black_effective">#2a2a2a</color>
+    <color name="black">#000000</color>
+
+    <!-- basic colors -->
+    <color name="transparent">#00000000</color>
+
+    <color name="facebook">#3b5998</color>
+    <color name="google">#d34836</color>
+
+    <color name="purple_500">#9C27B0</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="indigo_500">#3F51B5</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="light_blue_500">#03A9F4</color>
+
+</resources>

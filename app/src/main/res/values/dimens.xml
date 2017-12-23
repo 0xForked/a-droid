@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- view -->
+    <dimen name="five_dp">5dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="fifteen_dp">15dp</dimen>
+    <dimen name="eighteen_dp">18dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="twenty_five_dp">25dp</dimen>
+    <dimen name="thirty_dp">30dp</dimen>
+    <dimen name="thirty_five_dp">35dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="forty_five_dp">45dp</dimen>
+    <dimen name="fifty_dp">50dp</dimen>
+    <dimen name="fifty_five_dp">55dp</dimen>
+    <dimen name="sixty_dp">60dp</dimen>
+    <dimen name="sixty_five_dp">65dp</dimen>
+    <dimen name="seventy_dp">70dp</dimen>
+    <dimen name="seventy_five_dp">75dp</dimen>
+    <dimen name="eighty_dp">80dp</dimen>
+    <dimen name="ninety_dp">90dp</dimen>
+    <dimen name="one_hundred_dp">100dp</dimen>
+    <dimen name="one_hundred_twenty_dp">120dp</dimen>
+    <dimen name="one_hundred_thirty_dp">130dp</dimen>
+    <dimen name="one_hundred_forty_dp">140dp</dimen>
+    <dimen name="one_hundred_fifty_dp">150dp</dimen>
+    <dimen name="two_hundred_dp">200dp</dimen>
+
+    <!-- font -->
+    <dimen name="five_sp">5sp</dimen>
+    <dimen name="ten_sp">10sp</dimen>
+    <dimen name="fifteen_sp">15sp</dimen>
+    <dimen name="eighteen_sp">18sp</dimen>
+    <dimen name="twenty_sp">20sp</dimen>
+    <dimen name="twenty_five_sp">25sp</dimen>
+    <dimen name="thirty_sp">30sp</dimen>
+    <dimen name="thirty_five_sp">35sp</dimen>
+    <dimen name="forty_sp">40sp</dimen>
+    <dimen name="forty_five_sp">45sp</dimen>
+    <dimen name="fifty_sp">50sp</dimen>
+    <dimen name="fifty_five_sp">55sp</dimen>
+    <dimen name="sixty_sp">60sp</dimen>
+    <dimen name="sixty_five_sp">65sp</dimen>
+    <dimen name="one_hundred_sp">100sp</dimen>
+    <dimen name="one_hundred_twenty_sp">120sp</dimen>
+    <dimen name="one_hundred_thirty_sp">130sp</dimen>
+    <dimen name="one_hundred_forty_sp">140sp</dimen>
+
+
+</resources>
