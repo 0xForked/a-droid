@@ -102,7 +102,7 @@ class AuthSignupFragment : Fragment() {
 
                 try {
 
-                    mApiService.service.signUp(regName, regUsername, regPhone,
+                    mApiService.authService.signUp(regName, regUsername, regPhone,
                             regEmail, regPassword).enqueue(object : Callback<ResponseBody>{
                         override fun onResponse(call: Call<ResponseBody>?,
                                                         response: Response<ResponseBody>) {

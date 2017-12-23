@@ -12,6 +12,7 @@ import java.io.IOException
  * aasumitro@gmail.com
  */
 
+//this is safe to delete
 class ResponseInterceptor : Interceptor {
 
     @Throws(IOException::class)

@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.asmith.someapp.R
+import id.asmith.someapp.data.local.db.SQLHandler
 import id.asmith.someapp.ui.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_auth_signin.*
 import okhttp3.ResponseBody
@@ -24,6 +25,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import id.asmith.someapp.data.remote.ApiClient as mApiService
 import id.asmith.someapp.util.CommonUtils as utils
 
@@ -118,7 +120,7 @@ class AuthSigninFragment : Fragment() {
 
                 try {
 
-                    mApiService.service.signIn(email, password)
+                    mApiService.authService.signIn(email, password)
                             .enqueue(object : Callback<ResponseBody> {
                         override fun onResponse(call: Call<ResponseBody>,
                                                 response: Response<ResponseBody>) {
@@ -135,25 +137,14 @@ class AuthSigninFragment : Fragment() {
 
                                     if (accStatus != 0) {
 
-                                        /* test login
-                                        activity?.alert("$message your id $uid " +
+                                      /*  activity?.alert("$message your id $uid " +
                                                 "your token $token", "Welcome") {
                                             yesButton {  activity?.toast("Welcome back") }
-                                        }?.show()?.setCancelable(false)*/
+                                        }?.show()?.setCancelable(false)
+*/
+                                        Log.d("Debug", "Message : $message")
 
-                                        Log.d("Debug", "Success login")
-
-
-                                       activity!!.startActivity<MainActivity>(
-                                                "EXTRA_UID" to uid,
-                                                "EXTRA_TOKEN" to token)
-
-                                        /*val intent = Intent(activity, MainActivity::class.java)
-                                        intent.putExtra("EXTRA_UID", uid)
-                                        intent.putExtra("EXTRA_TOKEN", token)
-                                        startActivity(intent)*/
-
-                                        activity!!.finish()
+                                        localData(uid, token)
 
                                     } else {
 
@@ -194,6 +185,7 @@ class AuthSigninFragment : Fragment() {
 
                         override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
                             Log.e("Debug", "OnFailure : $t")
+                            dialog.dismiss()
                         }
 
                     })
@@ -206,6 +198,66 @@ class AuthSigninFragment : Fragment() {
 
         // start thread
         background.start()
+    }
+
+    private fun localData(uid: String?, token: String?) {
+        val dialog = activity!!.indeterminateProgressDialog("Updating local data")
+        dialog.setCancelable(false)
+        dialog.show()
+
+        try {
+
+            if (uid != null && token != null) {
+                mApiService.userService.userDetail(uid, token).enqueue(object :
+                        Callback<ResponseBody> {
+
+                    override fun onResponse(call: Call<ResponseBody>?,
+                                            response: Response<ResponseBody>) {
+
+                        if (response.isSuccessful) {
+                            val thisResults = JSONObject(response.body()!!.string())
+                            val thisUserData = thisResults.getJSONObject("user")
+                            val userId = thisUserData.getString("uid")
+                            val username = thisUserData.getString("username")
+                            val name = thisUserData.getString("name")
+                            val userEmail = thisUserData.getString("email")
+                            val phone = thisUserData.getString("phone")
+                            val userToken = thisUserData.getString("token")
+                            val isLogged = "true"
+                            val created = Calendar.getInstance().time
+                            val updated = Calendar.getInstance().time
+
+                            val database = SQLHandler(context)
+                            database.addUserData(userId, username, name, userEmail, phone,
+                                    userToken, isLogged, created.toString(), updated.toString())
+
+                            activity!!.startActivity<MainActivity>(
+                                    "EXTRA_UID" to uid, "EXTRA_TOKEN" to token)
+
+                            activity!!.finish()
+
+
+
+                            dialog.dismiss()
+                        } else {
+                            activity!!.longToast("Failed")
+                            dialog.dismiss()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        Log.e("Debug", "OnFailure : $t")
+                        dialog.dismiss()
+                    }
+
+                })
+            } else {
+                activity!!.longToast("Token and uid is null")
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     //Forgot password in action .remove(this)

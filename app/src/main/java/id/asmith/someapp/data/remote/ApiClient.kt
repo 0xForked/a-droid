@@ -18,11 +18,18 @@ object ApiClient{
     private val client = OkHttpClient.Builder()
             .addInterceptor(interceptor).build()
 
-    private val retrofit = Retrofit.Builder()
+    private val auth = Retrofit.Builder()
             .baseUrl(utils.AUTH_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
 
-    val service: ApiService = retrofit.create(ApiService::class.java)
+    private val user = Retrofit.Builder()
+            .baseUrl(utils.USER_API_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+    val authService: ApiService = auth.create(ApiService::class.java)
+    val userService: ApiService = user.create(ApiService::class.java)
 }

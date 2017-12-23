@@ -22,6 +22,16 @@ object AppConstants {
     val DB_VERSION = 1
     val DB_TABLE = "user"
     val NULL_INDEX = -1L
+    val KEY_ID = "id"
+    val KEY_UID = "uid"
+    val KEY_USERNAME ="username"
+    val KEY_NAME ="name"
+    val KEY_EMAIL ="email"
+    val KEY_PHONE ="phone"
+    val KEY_TOKEN = "token"
+    val KEY_LOGGED = "isLoggedIn"
+    val KEY_CREATED = "created_at"
+    val KEY_UPDATED ="updated_at"
 
     //Remote data
     private val BASE_API_URL = "http://192.168.43.70/project/queue-api/"
