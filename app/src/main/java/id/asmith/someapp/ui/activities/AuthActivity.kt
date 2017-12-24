@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import id.asmith.someapp.R
-import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.local.SQLHandler
 import id.asmith.someapp.ui.fragments.AuthLockFragment
 import id.asmith.someapp.ui.fragments.AuthSigninFragment
 import org.jetbrains.anko.toast
@@ -23,9 +23,10 @@ class AuthActivity : AppCompatActivity() {
         // Check that the activity is using the layout
         if (savedInstanceState == null) {
             if (uid == null) {
-                // Add the fragment to the 'fragment_container' FrameLayout
+                toast("user belum pernah login atau data sudah dihapus")
                 changeFragment(AuthSigninFragment())
             } else {
+                toast("user sudah pernah login data disimpan")
                 changeFragment(AuthLockFragment())
             }
 
@@ -34,7 +35,6 @@ class AuthActivity : AppCompatActivity() {
 
     private fun changeFragment (f: Fragment, cleanStack: Boolean = false) {
 
-        toast("changeFragment")
         val ft = supportFragmentManager.beginTransaction()
 
         if (cleanStack) {
@@ -51,7 +51,6 @@ class AuthActivity : AppCompatActivity() {
 
     private fun clearBackStack() {
 
-        toast("clearBackStack")
         val manager = supportFragmentManager
         if (manager.backStackEntryCount > 0) {
             val first = manager.getBackStackEntryAt(0)
@@ -61,7 +60,6 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        toast("onBackPressed")
         val fragmentManager = supportFragmentManager
         if (fragmentManager.backStackEntryCount > 1) {
             fragmentManager.popBackStack()

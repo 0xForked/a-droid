@@ -2,9 +2,8 @@ package id.asmith.someapp.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import id.asmith.someapp.R
-import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.local.SQLHandler
 import org.jetbrains.anko.startActivity
 
 class SplashActivity : AppCompatActivity() {
@@ -17,21 +16,23 @@ class SplashActivity : AppCompatActivity() {
             override fun run() {
                 try {
 
-                    // Thread will sleep for 5 seconds
-                    sleep((5 * 1000).toLong())
+                    // Thread will sleep for 3 seconds
+                    sleep((3 * 1000).toLong())
 
                     val userDetail = SQLHandler(baseContext).getUser()
-                    val isLoggedIn = userDetail["logged"]!!.toBoolean()
+                    val isLoggedIn = userDetail["logged"]
 
-                    if (isLoggedIn){
+                    if (isLoggedIn != null && isLoggedIn.toBoolean()) {
+
                         // Main Activity
                         openMainActivity()
+
                     } else {
+
                         // Auth Activity
                         openAuthActivity()
-                    }
 
-                    Log.e("Logged status", isLoggedIn.toString())
+                    }
 
                 } catch (e: Exception) {
 

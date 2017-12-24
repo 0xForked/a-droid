@@ -3,13 +3,10 @@ package id.asmith.someapp.ui.activities
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import id.asmith.someapp.R
-import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.local.SQLHandler
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.indeterminateProgressDialog
 import org.jetbrains.anko.startActivity
 import id.asmith.someapp.data.remote.ApiClient as mApiService
-
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,9 +32,6 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener{
             SQLHandler(this).loggedStatusOut(uid!!)
             startActivity<MainActivity>()
-            val dialog = indeterminateProgressDialog("Logged out")
-            dialog.setCancelable(false)
-            dialog.show()
             finish()
         }
     }

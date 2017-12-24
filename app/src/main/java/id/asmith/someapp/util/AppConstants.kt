@@ -12,16 +12,10 @@ object AppConstants {
     val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
 
-    //Local data pref
-    val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
-    val PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID"
-    val PREF_KEY_CURRENT_USER_TOKEN = "PREF_KEY_CURRENT_USER_ACCESS_TOKEN"
-
     //Local data db
     val DB_NAME = "QueueApp"
     val DB_VERSION = 1
     val DB_TABLE = "user"
-    val NULL_INDEX = -1L
     val KEY_ID = "id"
     val KEY_UID = "uid"
     val KEY_USERNAME ="username"

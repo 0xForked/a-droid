@@ -43,7 +43,7 @@
     <string name="caption_login">Already a member? Sign in</string>
     <string name="caption_forgot_password">Forgot password?</string>
     <string name="caption_enter_password">Enter password</string>
-    <string name="caption_change_account">Log with another account</string>
+    <string name="caption_change_account">Log in with another account</string>
     <string name="caption_valid_email">Email not valid</string>
     <string name="caption_empty_name">Name field is empty</string>
     <string name="caption_empty_email">Email field is empty</string>

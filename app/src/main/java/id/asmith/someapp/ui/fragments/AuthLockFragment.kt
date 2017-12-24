@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import id.asmith.someapp.R
-import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.local.SQLHandler
 import id.asmith.someapp.ui.activities.AuthActivity
 import kotlinx.android.synthetic.main.fragment_auth_lock_user.*
 import org.jetbrains.anko.*

@@ -1,4 +1,4 @@
-package id.asmith.someapp.data.local.db
+package id.asmith.someapp.data.local
 
 import android.content.ContentValues
 import android.content.Context
@@ -51,7 +51,7 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         Log.e("Debug", "Table is Exist and will deleted")
 
     }
-    
+
     fun getUser(): HashMap<String, String> {
         val userData = HashMap<String, String>()
         val db: SQLiteDatabase = this.readableDatabase

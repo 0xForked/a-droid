@@ -15,7 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import id.asmith.someapp.R
-import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.local.SQLHandler
 import id.asmith.someapp.data.model.LocalUser
 import id.asmith.someapp.ui.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_auth_signin.*
