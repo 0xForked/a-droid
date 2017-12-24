@@ -11,16 +11,55 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/thirty_dp">
 
-        <ImageView
-            android:id="@+id/image_lock_user"
-            android:layout_width="@dimen/one_hundred_dp"
-            android:layout_height="@dimen/one_hundred_dp"
+        <RelativeLayout
+            android:id="@+id/lay_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fifty_dp"
-            android:src="@mipmap/ic_launcher"
+            android:padding="@dimen/twenty_dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/desc_image" />
+            >
+
+            <ImageView
+                android:id="@+id/image_lock_user"
+                android:layout_width="@dimen/seventy_five_dp"
+                android:layout_height="@dimen/seventy_five_dp"
+                android:contentDescription="@string/desc_image"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/text_lock_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/five_dp"
+                android:textSize="@dimen/twenty_sp"
+                android:layout_marginTop="@dimen/fifteen_dp"
+                android:hint="@string/full_name"
+                android:layout_toEndOf="@id/image_lock_user" />
+
+            <TextView
+                android:id="@+id/text_lock_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/five_dp"
+                android:textSize="@dimen/eighteen_sp"
+                android:hint="@string/email"
+                android:layout_toEndOf="@id/image_lock_user"
+                android:layout_below="@+id/text_lock_name"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_more_vert"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/button_lock_menu"/>
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/text_lock_caption"
@@ -33,7 +72,7 @@
             android:textSize="@dimen/fifteen_sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_lock_user" />
+            app:layout_constraintTop_toBottomOf="@+id/lay_user" />
 
         <EditText
             android:id="@+id/input_lock_password"

@@ -6,3 +6,17 @@ package id.asmith.someapp.data.model
  * https://asmith.my.id
  * aasumitro@gmail.com
  */
+
+
+data class LocalUser(
+            val uid: String,
+            val username: String,
+            val name: String,
+            val email: String,
+            val phone: String,
+            val token: String,
+            val logged: String,
+            val created: String,
+            val updated: String
+    )
+

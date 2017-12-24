@@ -2,6 +2,7 @@ package id.asmith.someapp.ui.activities
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import id.asmith.someapp.R
 import id.asmith.someapp.data.local.db.SQLHandler
 import org.jetbrains.anko.startActivity
@@ -19,11 +20,10 @@ class SplashActivity : AppCompatActivity() {
                     // Thread will sleep for 5 seconds
                     sleep((5 * 1000).toLong())
 
-                    val db = SQLHandler(baseContext)
-                    val userDetail: HashMap<String, String> = db.getUser()
-                    val isLoggedIn = userDetail["logged"]
+                    val userDetail = SQLHandler(baseContext).getUser()
+                    val isLoggedIn = userDetail["logged"]!!.toBoolean()
 
-                    if (isLoggedIn.equals("true")){
+                    if (isLoggedIn){
                         // Main Activity
                         openMainActivity()
                     } else {
@@ -31,6 +31,7 @@ class SplashActivity : AppCompatActivity() {
                         openAuthActivity()
                     }
 
+                    Log.e("Logged status", isLoggedIn.toString())
 
                 } catch (e: Exception) {
 

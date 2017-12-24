@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import id.asmith.someapp.R
 import id.asmith.someapp.data.local.db.SQLHandler
+import id.asmith.someapp.data.model.LocalUser
 import id.asmith.someapp.ui.activities.MainActivity
 import kotlinx.android.synthetic.main.fragment_auth_signin.*
 import okhttp3.ResponseBody
@@ -140,8 +141,7 @@ class AuthSigninFragment : Fragment() {
                                       /*  activity?.alert("$message your id $uid " +
                                                 "your token $token", "Welcome") {
                                             yesButton {  activity?.toast("Welcome back") }
-                                        }?.show()?.setCancelable(false)
-*/
+                                        }?.show()?.setCancelable(false)*/
                                         Log.d("Debug", "Message : $message")
 
                                         localData(uid, token)
@@ -228,8 +228,8 @@ class AuthSigninFragment : Fragment() {
                             val updated = Calendar.getInstance().time
 
                             val database = SQLHandler(context)
-                            database.addUserData(userId, username, name, userEmail, phone,
-                                    userToken, isLogged, created.toString(), updated.toString())
+                            database.addUserData(LocalUser(userId, username, name, userEmail, phone,
+                                    userToken, isLogged, created.toString(), updated.toString()))
 
                             activity!!.startActivity<MainActivity>(
                                     "EXTRA_UID" to uid, "EXTRA_TOKEN" to token)

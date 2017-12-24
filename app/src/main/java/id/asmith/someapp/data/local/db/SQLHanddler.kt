@@ -6,9 +6,11 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import id.asmith.someapp.R.string.email
+import id.asmith.someapp.R.string.phone
+import id.asmith.someapp.data.model.LocalUser
+import id.asmith.someapp.data.model.LocalUser as local
 import id.asmith.someapp.util.AppConstants as utils
-
-
 
 /**
  * Created by Agus Adhi Sumitro on 23/12/2017.
@@ -49,42 +51,7 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         Log.e("Debug", "Table is Exist and will deleted")
 
     }
-
-    fun addUserData(uid: String, username: String, name: String, email: String, phone: String,
-                    token: String, logged: String, created_at: String, updated_at: String) {
-
-        deleteUserData()
-        val db: SQLiteDatabase = this.writableDatabase
-        val values = ContentValues()
-        values.put(utils.KEY_UID, uid)
-        values.put(utils.KEY_USERNAME, username)
-        values.put(utils.KEY_NAME, name)
-        values.put(utils.KEY_EMAIL, email)
-        values.put(utils.KEY_PHONE, phone)
-        values.put(utils.KEY_TOKEN, token)
-        values.put(utils.KEY_LOGGED, logged)
-        values.put(utils.KEY_CREATED, created_at)
-        values.put(utils.KEY_UPDATED, updated_at)
-        db.insert(utils.DB_TABLE, null, values)
-        db.close()
-
-        Log.d("Debug", "Success add user data $uid, $username, $name, $email, $phone," +
-                "$token, $logged, $created_at, $updated_at")
-
-    }
-
-    fun loggedStatusOut(logged: String) {
-        
-    }
-
-    fun deleteUserData() {
-        val db: SQLiteDatabase = this.writableDatabase
-        db.delete(utils.DB_TABLE, null, null)
-        db.close()
-        Log.d("Debug", "Delete all user info from database")
-
-    }
-
+    
     fun getUser(): HashMap<String, String> {
         val userData = HashMap<String, String>()
         val db: SQLiteDatabase = this.readableDatabase
@@ -110,6 +77,42 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
 
     }
 
+    fun addUserData(user: LocalUser) {
+
+        deleteUserData()
+        val db: SQLiteDatabase = this.writableDatabase
+        val values = ContentValues()
+        values.put(utils.KEY_UID, user.uid)
+        values.put(utils.KEY_USERNAME, user.username)
+        values.put(utils.KEY_NAME, user.name)
+        values.put(utils.KEY_EMAIL, user.email)
+        values.put(utils.KEY_PHONE, user.phone)
+        values.put(utils.KEY_TOKEN, user.token)
+        values.put(utils.KEY_LOGGED, user.logged)
+        values.put(utils.KEY_CREATED, user.created)
+        values.put(utils.KEY_UPDATED, user.updated)
+        db.insert(utils.DB_TABLE, null, values)
+        db.close()
+
+        Log.d("Debug", "Success add user data ${user.uid}, ${user.username}, ${user.name}," +
+                " $email, $phone, ${user.email}, ${user.logged}, ${user.created}, ${user.updated}")
+
+    }
+
+    fun loggedStatusOut(uid: String) {
+        val db: SQLiteDatabase = this.writableDatabase
+        val values = ContentValues()
+        values.put(utils.KEY_LOGGED, "false")
+        db.update(utils.DB_TABLE, values, "uid=$uid", null)
+        db.close()
+    }
+
+    fun deleteUserData() {
+        val db: SQLiteDatabase = this.writableDatabase
+        db.delete(utils.DB_TABLE, null, null)
+        db.close()
+
+    }
 
 
 }
