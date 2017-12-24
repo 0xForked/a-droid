@@ -9,30 +9,31 @@ import id.asmith.someapp.R
 import id.asmith.someapp.data.local.SQLHandler
 import id.asmith.someapp.ui.fragments.AuthLockFragment
 import id.asmith.someapp.ui.fragments.AuthSigninFragment
-import org.jetbrains.anko.toast
 
 class AuthActivity : AppCompatActivity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auth)
-        val userDetail = SQLHandler(this).getUser()
+        val userDetail = SQLHandler(this).getUserData()
         val uid = userDetail["uid"]
 
         // Check that the activity is using the layout
         if (savedInstanceState == null) {
             if (uid == null) {
-                toast("user belum pernah login atau data sudah dihapus")
+                //where user never login on device or
+                //user data already cleared from the device or
+                //user clean data from this app
                 changeFragment(AuthSigninFragment())
             } else {
-                toast("user sudah pernah login data disimpan")
+                //where user ever login before
                 changeFragment(AuthLockFragment())
             }
 
         }
     }
 
+    //Function fragment transition
     private fun changeFragment (f: Fragment, cleanStack: Boolean = false) {
 
         val ft = supportFragmentManager.beginTransaction()

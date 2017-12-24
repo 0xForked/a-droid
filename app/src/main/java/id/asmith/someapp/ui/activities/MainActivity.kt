@@ -17,20 +17,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val userDetail = SQLHandler(this).getUser()
-        val uid = userDetail["uid"]
-        val user = userDetail["username"]
-        val name = userDetail["name"]
-        val email = userDetail["email"]
-        val token = userDetail["token"]
-        val text1 = "id : $uid, username: $user, nama : $name, email : $email"
-        val text2 = "token anda $token"
+        //access user local data
+        val userData = SQLHandler(this).getUserData()
+        val uid = userData["uid"]
+        val name = userData["name"]
+        val token = userData["token"]
+        val text1 = "Welcome  $name"
+        val text2 = "Your access token $token"
+
         textUid.text =  text1
         textToken.text = text2
 
-
+        //Logout button to destroy user session
         button.setOnClickListener{
-            SQLHandler(this).loggedStatusOut(uid!!)
+            SQLHandler(this).loggedUserOut(uid!!)
             startActivity<MainActivity>()
             finish()
         }
@@ -39,9 +39,12 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        val userDetail = SQLHandler(this).getUser()
-        val logged = userDetail["logged"]!!.toBoolean()
-        if (!logged) {
+        //On activity resume cek user session are available or not
+        //if user session is empty or has been destroy before
+        //user will redirect to auth activity
+        val userData = SQLHandler(this).getUserData()
+        val loggedStatus = userData["logged"]!!.toBoolean()
+        if (!loggedStatus) {
             startActivity<AuthActivity>()
             finish()
         }

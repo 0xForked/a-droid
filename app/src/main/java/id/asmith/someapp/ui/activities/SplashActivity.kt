@@ -12,6 +12,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        //Do thread
         val background = object : Thread() {
             override fun run() {
                 try {
@@ -19,23 +20,29 @@ class SplashActivity : AppCompatActivity() {
                     // Thread will sleep for 3 seconds
                     sleep((3 * 1000).toLong())
 
-                    val userDetail = SQLHandler(baseContext).getUser()
-                    val isLoggedIn = userDetail["logged"]
+                    //Get local user data
+                    val userData = SQLHandler(baseContext).getUserData()
+                    val isLoggedIn = userData["logged"]
 
+                    //cek user ever login before or user already login and
+                    //did'nt clear hes session
                     if (isLoggedIn != null && isLoggedIn.toBoolean()) {
 
-                        // Main Activity
+                        // if local data is not empty and
+                        // user session still available
+                        // Redirect him to Main Activity
                         openMainActivity()
 
                     } else {
-
+                        // if user logged status has been destroy or
+                        // user data is empty in our local table
                         // Auth Activity
                         openAuthActivity()
 
                     }
 
                 } catch (e: Exception) {
-
+                    //Print error in logcat (development requirement)
                     e.printStackTrace()
 
                 }
@@ -49,7 +56,7 @@ class SplashActivity : AppCompatActivity() {
 
     fun openAuthActivity() {
 
-        // After 5 seconds redirect to another intent
+        // redirect to another Auth Activity
         startActivity<AuthActivity>()
 
         //Remove activity
@@ -59,7 +66,7 @@ class SplashActivity : AppCompatActivity() {
 
     fun openMainActivity() {
 
-        // After 5 seconds redirect to another intent
+        // redirect to another Main Activity
         startActivity<MainActivity>()
 
         //Remove activity

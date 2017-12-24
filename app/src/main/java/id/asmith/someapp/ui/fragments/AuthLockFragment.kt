@@ -26,7 +26,7 @@ class AuthLockFragment : Fragment(), PopupMenu.OnMenuItemClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val userDetail = SQLHandler(activity).getUser()
+        val userDetail = SQLHandler(activity).getUserData()
         val name = userDetail["name"]
         val email = userDetail["email"]
 

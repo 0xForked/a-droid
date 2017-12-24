@@ -6,8 +6,6 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import id.asmith.someapp.R.string.email
-import id.asmith.someapp.R.string.phone
 import id.asmith.someapp.data.model.LocalUser
 import id.asmith.someapp.data.model.LocalUser as local
 import id.asmith.someapp.util.AppConstants as utils
@@ -39,7 +37,6 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         // Here you create tables
         db.execSQL(createTable)
 
-        Log.d("Debug", "Databases Created")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -48,11 +45,10 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         // Create new
         onCreate(db)
 
-        Log.e("Debug", "Table is Exist and will deleted")
 
     }
 
-    fun getUser(): HashMap<String, String> {
+    fun getUserData(): HashMap<String, String> {
         val userData = HashMap<String, String>()
         val db: SQLiteDatabase = this.readableDatabase
 
@@ -71,14 +67,11 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         cursor.close()
         db.close()
 
-        Log.d("Debug", "User data" + userData.toString())
-
         return userData
 
     }
 
     fun addUserData(user: LocalUser) {
-
         deleteUserData()
         val db: SQLiteDatabase = this.writableDatabase
         val values = ContentValues()
@@ -95,16 +88,8 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         db.close()
 
         Log.d("Debug", "Success add user data ${user.uid}, ${user.username}, ${user.name}," +
-                " $email, $phone, ${user.email}, ${user.logged}, ${user.created}, ${user.updated}")
+                " ${user.phone}, ${user.email}, ${user.logged}, ${user.created}, ${user.updated}")
 
-    }
-
-    fun loggedStatusOut(uid: String) {
-        val db: SQLiteDatabase = this.writableDatabase
-        val values = ContentValues()
-        values.put(utils.KEY_LOGGED, "false")
-        db.update(utils.DB_TABLE, values, "uid=$uid", null)
-        db.close()
     }
 
     fun deleteUserData() {
@@ -114,5 +99,12 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
 
     }
 
+    fun loggedUserOut(uid: String) {
+        val db: SQLiteDatabase = this.writableDatabase
+        val values = ContentValues()
+        values.put(utils.KEY_LOGGED, "false")
+        db.update(utils.DB_TABLE, values, "uid=$uid", null)
+        db.close()
+    }
 
 }

@@ -13,6 +13,7 @@ import java.io.IOException
  */
 
 //this is safe to delete
+//already use okHttp interceptor
 class ResponseInterceptor : Interceptor {
 
     @Throws(IOException::class)
