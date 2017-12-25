@@ -1,5 +1,5 @@
 # a-droid
-Android app that use a-rest as a service [base code] for clean version cek this a href="https://github.com/aasumitro/a-droid-cc">Clean version</a> 
+Android app that use a-rest as a service [base code] for clean version cek this <a href="https://github.com/aasumitro/a-droid-cc">Clean version</a> 
 
 </br>
 <p align="center">
