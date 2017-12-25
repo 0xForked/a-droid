@@ -1,5 +1,5 @@
 # a-droid
-Android app that use a-rest as a service [base code]
+Android app that use a-rest as a service [base code] for clean version cek this a href="https://github.com/aasumitro/a-droid-cc">Clean version</a> 
 
 </br>
 <p align="center">
@@ -13,6 +13,5 @@ Android app that use a-rest as a service [base code]
 
 ### Link terkait 
 - a-rest : https://github.com/aasumitro/a-rest
-- a-droid-cc : https://github.com/aasumitro/a-droid-cc
 - a-dash : https://github.com/aasumitro/a-dash
 
