@@ -23,6 +23,20 @@ class CommonUtils {
 
     }
 
+    //cek phone validation
+    fun isPhoneValid(phone: String): Boolean {
+        val pattern: Pattern = Pattern.compile(AppConstants.PHONE_PATTERN)
+        val matcher: Matcher = pattern.matcher(phone)
+        return matcher.matches()
+    }
+
+    //cek username validation
+    fun inUsernameValid (username: String): Boolean {
+        val pattern: Pattern = Pattern.compile(AppConstants.USERNAME_PATTERN)
+        val matcher: Matcher = pattern.matcher(username)
+        return matcher.matches()
+    }
+
     //Cek connection
     fun isNetworkConnected(context: Context?): Boolean {
 

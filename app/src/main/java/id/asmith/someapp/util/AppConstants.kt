@@ -8,9 +8,11 @@ package id.asmith.someapp.util
  */
 object AppConstants {
 
-    //Email validation
+    //validation
     val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+    val USERNAME_PATTERN = ("^[a-z0-9_-]{3,15}\$")
+    val PHONE_PATTERN = ("^[+(00)][0-9]{6,14}$")
 
     //Local data db
     val DB_NAME = "QueueApp"

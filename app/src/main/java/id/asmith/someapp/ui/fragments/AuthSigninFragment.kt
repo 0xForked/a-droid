@@ -237,18 +237,19 @@ class AuthSigninFragment : Fragment() {
                             val thisResults = JSONObject(response.body()!!.string())
                             val thisUserData = thisResults.getJSONObject("user")
                             val userId = thisUserData.getString("uid")
-                            val username = thisUserData.getString("username")
-                            val name = thisUserData.getString("name")
+                            val userInitial = thisUserData.getString("username")
+                            val userFullName = thisUserData.getString("name")
                             val userEmail = thisUserData.getString("email")
-                            val phone = thisUserData.getString("phone")
+                            val userPhone = thisUserData.getString("phone")
                             val userToken = thisUserData.getString("token")
                             val isLogged = "true"
-                            val created = Calendar.getInstance().time
-                            val updated = Calendar.getInstance().time
+                            val isCreated = Calendar.getInstance().time
+                            val isUpdated = Calendar.getInstance().time
 
                             val database = SQLHandler(context)
-                            database.addUserData(LocalUser(userId, username, name, userEmail, phone,
-                                    userToken, isLogged, created.toString(), updated.toString()))
+                            database.addUserData(LocalUser(userId, userInitial, userFullName,
+                                    userEmail, userPhone, userToken, isLogged,
+                                    isCreated.toString(), isUpdated.toString()))
 
                             activity!!.startActivity<MainActivity>()
 
@@ -267,6 +268,7 @@ class AuthSigninFragment : Fragment() {
                     }
 
                     override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
+                        activity?.longToast("Can't connect with server app")
                         Log.e("Debug", "OnFailure : $t")
                         dialog.dismiss()
                     }

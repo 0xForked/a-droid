@@ -107,4 +107,13 @@ class SQLHandler(context: Context?) : SQLiteOpenHelper(context, utils.DB_NAME,
         db.close()
     }
 
+    fun loggedUserIn (uid: String, token: String) {
+        val db: SQLiteDatabase = this.writableDatabase
+        val values = ContentValues()
+        values.put(utils.KEY_LOGGED, "true")
+        values.put(utils.KEY_TOKEN, token)
+        db.update(utils.DB_TABLE, values, "uid=$uid", null)
+        db.close()
+    }
+
 }
