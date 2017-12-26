@@ -33,17 +33,17 @@ interface ApiService {
     ): Call<ResponseBody>
 
     @FormUrlEncoded
-    @POST("change")
+    @POST("password/forgot")
+    fun forgotPassword (
+            @Field("email") email: String
+    ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("password/change")
     fun changePassword (
             @Field("id") user_id: String,
             @Field("password_old")password_old: String,
             @Field("password_new")password_new: String
-    ): Call<ResponseBody>
-
-    @FormUrlEncoded
-    @POST("forgot")
-    fun forgotPassword (
-            @Field("email") email: String
     ): Call<ResponseBody>
 
     @FormUrlEncoded

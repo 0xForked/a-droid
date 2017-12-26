@@ -34,11 +34,9 @@ object AppConstants {
 
     private val AUTH_ROUTE = "api/v1/auth/"
     private val USER_ROUTE = "api/v1/user/"
-    private val USER_PASSWORD_ROUTE = "api/v1/user/password/"
 
     val AUTH_API_URL = BASE_API_URL + AUTH_ROUTE
     val USER_API_URL = BASE_API_URL + USER_ROUTE
-    val USER_PASSWORD_API_URL = BASE_API_URL + USER_PASSWORD_ROUTE
 
 
 }

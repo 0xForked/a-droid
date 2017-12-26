@@ -23,13 +23,15 @@ class MainActivity : AppCompatActivity() {
         val name = userData["name"]
         val token = userData["token"]
         val text1 = "Welcome  $name"
-        val text2 = "Your access token $token"
+        val text2 = "Your access token : $token"
+        val text3 = "Your id is $uid"
 
-        textUid.text =  text1
+        textUid.text = text3
+        textName.text = text1
         textToken.text = text2
 
         //Logout button to destroy user session
-        button.setOnClickListener{
+        buttonLogout.setOnClickListener{
             SQLHandler(this).loggedUserOut(uid!!)
             startActivity<MainActivity>()
             finish()
@@ -48,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             startActivity<AuthActivity>()
             finish()
         }
+
     }
 
 
