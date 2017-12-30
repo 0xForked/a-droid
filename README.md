@@ -3,7 +3,8 @@ Android app that use a-rest as a service [base code] for clean version cek this 
 
 </br>
 <p align="center">
-  <img src="https://github.com/aasumitro/a-droid/blob/master/untitled.png?raw=true" width="400">
+  <img src="https://asmith.my.id/assets/images/post/untitled.png" width="400">
+  <img src="https://github.com/aasumitro/a-droid/blob/master/asd2.gif" width="250">
 </p>
 </br>
 
