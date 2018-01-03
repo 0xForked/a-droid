@@ -14,7 +14,6 @@ import kotlinx.android.synthetic.main.fragment_auth_forgot_password.*
 import okhttp3.ResponseBody
 import org.jetbrains.anko.*
 import org.json.JSONException
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -70,20 +69,19 @@ class AuthForgotFragment : Fragment() {
                         override fun onResponse(call: Call<ResponseBody>,
                                                 response: Response<ResponseBody>) {
 
-                                val thisResult = JSONObject(response.errorBody()!!.string())
-                                val status = thisResult.getString("status")
-                                val errors = thisResult.getString("error")
+                            if (response.isSuccessful) {
 
-                                if (status.toInt() == 201 && !errors.toBoolean()) {
-                                    activity?.alert("Please check your email",
+                                activity?.alert("Mail has been sent to your address",
                                             "Success") {
                                         yesButton {  onBack() }
-                                    }?.show()?.setCancelable(false)
-                                } else {
-                                    activity!!.longToast("Failed to send email "+
-                                            "please check again your email address")
-                                    dialog.dismiss()
-                                }
+                                }?.show()?.setCancelable(false)
+
+
+                            } else {
+
+                                activity!!.longToast("Cant find your email in database")
+
+                            }
 
                             dialog.dismiss()
                         }
